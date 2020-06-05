@@ -7,6 +7,7 @@ void intro_primera (char c[3][3]);
 void tablero (char c[3][3]);
 void intro_yo(char c[3][3]);
 void intro_ia(char c[3][3]);
+int ganador(char c[3][3]);
 
 int main(){
     char c [3][3];
@@ -16,22 +17,36 @@ int main(){
 }
 
 void loop (char c [3][3]){
-    int i;
+    int i, j;
+    
     i = 0;
-    intro_primera(c);
-    tablero(c);
+    
+    intro_primera (c);
+    
     do{
-        system("cls");
+        system ("cls");
         tablero(c);
-        if(i % 2 == 0){
-            intro_yo(c);
-        } else {
-            intro_ia(c);
+        if (i % 2 ==0){
+            intro_yo (c);
         }
+        else {
+          intro_ia (c);
+        }
+        j = ganador (c);
         i++;
-    } while ( i <= 9);
-
-    printf("Juego terminado");
+    } while (1 <= 9 && j == 2);
+    
+    system ("cls");
+    tablero(c);
+    if (j == 0){
+        printf ("Enhorabuena!! Has ganado!!\n\n");
+    }
+    else if (j == 1){
+        printf ("ohh noo!! Has perdido!! \n\n");
+    }
+    else {
+        printf ("Has empatado!! Intentalo de nuevo!! \n\n");
+    }
 }
 
 void intro_primera (char c[3][3]){
@@ -208,7 +223,7 @@ int ganador (char c[3][3]){
     return 1;//He perdido
    }
   }
-  if(c[1][1] == c[1][0] && c[1][1] c[1][2]){
+  if(c[1][1] == c[1][0] && c[1][1] == c[1][2]){
     if (c[1][1] =='X'){
     return 0; //He ganado
    }
@@ -216,7 +231,7 @@ int ganador (char c[3][3]){
     return 1;//He perdido
    }
   }
-  if(c[1][1] == c[2][0] && c[1][1] c[0][2]){
+  if(c[1][1] == c[2][0] && c[1][1] == c[0][2]){
     if (c[1][1] =='X'){
     return 0; //He ganado
    }
@@ -224,7 +239,7 @@ int ganador (char c[3][3]){
     return 1;//He perdido
    }
   }
-  if(c[1][1] == c[0][1] && c[1][1] c[2][1]){
+  if(c[1][1] == c[0][1] && c[1][1] == c[2][1]){
     if (c[1][1] =='X'){
     return 0; //He ganado
    }
@@ -233,7 +248,7 @@ int ganador (char c[3][3]){
    }
   }
  }
- if (c[2][2] == 'X' || c[2][2] =='O'){
+ if (c[2][2] == 'X' || c[2][2] == 'O'){
   if (c[2][2] == c[2][0] && c[2][2] ==c[2][1]){
     if (c[2][2] =='X'){
     return 0; //He ganado
