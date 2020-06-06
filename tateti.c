@@ -47,6 +47,8 @@ void loop (char c [3][3]){
     else {
         printf ("Has empatado!! Intentalo de nuevo!! \n\n");
     }
+
+    system("pause");
 }
 
 void intro_primera (char c[3][3]){
